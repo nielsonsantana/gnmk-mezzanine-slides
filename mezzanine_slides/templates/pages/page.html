@@ -15,15 +15,7 @@
 {{ page.description }}
 {% endmetablock %}{% endblock %}
 
-{% block slides %}{% if page.slide_set.all %}
-<div class="row">
-<div class="span12">
-    <ul class="rslides">{% for image in page.slide_set.all %}
-        <li><img src="{{ MEDIA_URL }}{% thumbnail image.file 940 300 %}" alt="{{ image.description }}"/></li>
-    {% endfor %}</ul>
-</div>
-</div>
-{% endif %}{% endblock %}
+{% block slides %}{% include "includes/slides.html" %}{% endblock %}
 
 {% block title %}
 {% editable page.title %}{{ page.title }}{% endeditable %}
