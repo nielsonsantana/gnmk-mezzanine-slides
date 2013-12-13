@@ -1,6 +1,7 @@
 from copy import deepcopy
 
 from django.contrib import admin
+from django.conf import settings
 
 from mezzanine.pages.models import RichTextPage
 
