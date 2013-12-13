@@ -9,11 +9,11 @@ from mezzanine.pages.admin import PageAdmin
 from mezzanine.forms.admin import FormAdmin
 from mezzanine.galleries.admin import GalleryAdmin
 
-try:
+if "cartridge.shop" in settings.INSTALLED_APPS:
     from cartridge.shop.models import Category
     from cartridge.shop.admin import CategoryAdmin
     cartridge = True
-except ImportError:
+else:
     cartridge = False
 
 from .models import Slide
