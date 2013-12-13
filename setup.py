@@ -11,7 +11,7 @@ setup(
     ],
 
     description='Easily plug a slideshow into your mezzanine website on all pages.',
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
 
     author='Isaac Bythewood',
     author_email='isaac@bythewood.me',
