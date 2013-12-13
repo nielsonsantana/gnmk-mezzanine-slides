@@ -7,7 +7,7 @@ setup(
     license='Simplified BSD',
 
     install_requires = [
-        'Mezzanine',
+        'Mezzanine >= 1.4.16',
     ],
 
     description='Easily plug a slideshow into your mezzanine website on all pages.',
