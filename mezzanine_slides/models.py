@@ -15,7 +15,7 @@ class Slide(Orderable):
     through each other with a fade effect.
     """
     page = models.ForeignKey(Page, null=True, blank=True)
-    file = FileField(_('File'), max_length=200, upload_to='galleries', format='Image')
+    file = FileField(_('File'), max_length=200, upload_to='slides', format='Image')
     description = models.CharField(_('Description'), blank=True, max_length=70)
 
     class Meta:
