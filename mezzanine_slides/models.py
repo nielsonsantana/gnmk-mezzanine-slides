@@ -1,4 +1,8 @@
-from urllib import unquote
+try:
+    from urllib import unquote
+except ImportError:  # assume python3
+    from urllib.parse import unquote
+
 from string import punctuation
 
 from django.db import models
