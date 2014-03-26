@@ -5,7 +5,12 @@
         <div class="span12">
             <ul class="rslides">
                 {% for image in page.slide_set.all %}
-                    <li><img src="{{ MEDIA_URL }}{% thumbnail image.file 940 300 %}" alt="{{ image.description }}"/></li>
+                    <li>
+                        <img src="{{ MEDIA_URL }}{% thumbnail image.file 940 300 %}" alt="{{ image.description }}"/>
+                        {% if image.caption %}
+                            <p class="caption">{{ image.caption|safe }}</p>
+                        {% endif %}
+                    </li>
                 {% endfor %}
             </ul>
         </div>
