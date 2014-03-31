@@ -1,4 +1,8 @@
-from urllib import unquote
+try:
+    from urllib import unquote
+except ImportError:  # assume python3
+    from urllib.parse import unquote
+
 from string import punctuation
 
 from django.db import models
@@ -17,6 +21,7 @@ class Slide(Orderable):
     page = models.ForeignKey(Page, null=True, blank=True)
     file = FileField(_('File'), max_length=200, upload_to='slides', format='Image')
     description = models.CharField(_('Description'), blank=True, max_length=70)
+    caption = models.CharField(_('Caption'), blank=True, max_length=140)
 
     class Meta:
         verbose_name = _('Slide')

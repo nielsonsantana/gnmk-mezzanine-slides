@@ -1,6 +1,8 @@
 mezzanine-slides
 ================
 
+PWhipp: Enhanced to support Python 3
+
 Add simple slide functionality to your Mezzanine based website allowing for
 beautiful banners at the tops of pages.
 
