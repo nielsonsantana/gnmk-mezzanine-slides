@@ -39,7 +39,6 @@ Include the CSS and JS in the compress areas of the ``base.html`` template::
   {% compress js %}
   ...
   <script src="{% static "responsiveslides/responsiveslides.min.js" %}"></script>
-  <script src="{% static "responsiveslides/responsiveslides-init.js" %}"></script>
   {% endcompress %}
 
 
