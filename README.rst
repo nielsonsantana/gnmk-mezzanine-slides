@@ -1,8 +1,6 @@
 mezzanine-slides
 ================
 
-PWhipp: Enhanced to support Python 3
-
 Add simple slide functionality to your Mezzanine based website allowing for
 beautiful banners at the tops of pages.
 
@@ -14,49 +12,70 @@ Setup
 2. In ``settings.py`` add ``mezzanine_slides`` to your ``INSTALLED_APPS`` above
    mezzanine apps.
 3. Run createdb or syncdb, if running syncdb run migrate if you are using South.
-4. If you haven't modified your ``base.html`` or ``pages/page.html`` templates
-   then you can just ``manage.py collecttemplates mezzanine_slides`` and use the
-   ones I provide. If you've already modified these templates see the Templates
-   section for continued instruction.
+4. Modify your ``base.html`` template as described below.
 
 
 Templates
 ---------
 
-Add this to your ``pages/page.html`` anywhere as long as it's not inside another
-block::
+We have two template options, fullscreen slides or standard slides. Include
+only one of the templates, css and js.
 
-  {% block slides %}{% include "includes/slides.html" %}{% endblock %}
 
-Add this to ``base.html`` where you would like the slides to appear, which is
-usually between your main content and the navigation::
+Standard Slides
+===============
 
-  {% block slides %}{% endblock %}
+Add this to ``base.html`` where you would like the slides to appear::
 
-Now you'll need to include the CSS and JS in your compress areas of your
-``base.html`` template::
+  {% include "includes/standard_slides.html" %}
+
+Include the CSS and JS in the compress areas of the ``base.html`` template::
 
   {% compress css %}
   ...
-  <link rel="stylesheet" href="{% static "css/responsiveslides.css" %}">
+  <link rel="stylesheet" href="{% static "responsiveslides/responsiveslides.css" %}"/>
   {% endcompress %}
 
-  
   {% compress js %}
   ...
-  <script src="{% static "js/responsiveslides.min.js" %}"></script>
-  <script src="{% static "js/responsiveslides-init.js" %}"></script>
+  <script src="{% static "responsiveslides/responsiveslides.min.js" %}"></script>
+  <script src="{% static "responsiveslides/responsiveslides-init.js" %}"></script>
+  {% endcompress %}
+
+
+Fullscreen Slides
+==================
+
+Add this to ``base.html`` where you would like the slides to appear::
+
+  {% include "includes/fullscreen_slides.html" %}
+
+Include the CSS and JS in the compress areas of the ``base.html`` template::
+
+  {% compress css %}
+  ...
+  <link rel="stylesheet" href="{% static "vegas/jquery.vegas.min.css" %}"/>
+  {% endcompress %}
+
+  {% compress js %}
+  ...
+  <script src="{% static "vegas/jquery.vegas.min.js" %}"></script>
   {% endcompress %}
 
 
 Credits
 -------
 
-Thanks to `Viljami Salminen`_ for his great `ResponsiveSlides.js`_ plugin.
+Thanks to `Viljami Salminen`_ for `ResponsiveSlides.js`_ plugin and
+`Jay Salvat`_ for `Vegas Background jQuery Plugin`_.
+
+PWhipp: Enhanced to support Python 3
 
 
 .. Links
 
 .. _Viljami Salminen: http://viljamis.com/
 .. _ResponsiveSlides.js: http://responsive-slides.viljamis.com/
+.. _Jay Salvat: http://jaysalvat.com/
+.. _Vegas Background jQuery Plugin: http://vegas.jaysalvat.com/
 
