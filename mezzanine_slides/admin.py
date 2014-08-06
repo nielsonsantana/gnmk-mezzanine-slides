@@ -11,13 +11,14 @@ from .models import Slide
 class SlideInline(TabularDynamicInlineAdmin):
     model = Slide
 
-
-PageAdmin.inlines += (SlideInline,)
-FormAdmin.inlines += (SlideInline,)
-GalleryAdmin.inlines += (SlideInline,)
-
+admin_classes_with_slides = [PageAdmin, FormAdmin, GalleryAdmin]
 
 if "cartridge.shop" in settings.INSTALLED_APPS:
     from cartridge.shop.admin import CategoryAdmin
-    CategoryAdmin += (SlideInline,)
+    admin_classes_with_slides.append(CategoryAdmin)
+
+for admin_class in admin_classes_with_slides:
+    setattr(admin_class, 'inlines', list(admin_class.inlines) + [SlideInline])
+
+
 
