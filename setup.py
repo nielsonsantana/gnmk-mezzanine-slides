@@ -3,11 +3,11 @@ from setuptools import setup
 
 setup(
     name='mezzanine-slides',
-    version='2.0.1',
+    version='2.1.1',
     license='Simplified BSD',
 
     install_requires=[
-        'Mezzanine >= 3.1.7',
+        'Mezzanine >= 3.1.10',
         'six >= 1.5.2'],
 
     description='Easily plug a slideshow into your mezzanine website on all pages.',

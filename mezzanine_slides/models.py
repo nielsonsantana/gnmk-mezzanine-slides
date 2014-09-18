@@ -19,11 +19,11 @@ class Slide(Orderable):
     Allows for pretty banner images across the top of pages that will cycle
     through each other with a fade effect.
     """
-    site = models.ForeignKey(Site, default=0)
     page = models.ForeignKey(Page)
     file = FileField(_('File'), max_length=200, upload_to='slides', format='Image')
     description = models.CharField(_('Description'), blank=True, max_length=200)
     caption = models.CharField(_('Caption'), blank=True, max_length=200)
+    site = models.ForeignKey(Site, default=0)
 
     class Meta:
         verbose_name = _('Slide')
