@@ -7,6 +7,7 @@ from string import punctuation
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.sites.models import Site
 
 from mezzanine.pages.models import Page
 from mezzanine.core.models import Orderable
@@ -18,6 +19,7 @@ class Slide(Orderable):
     Allows for pretty banner images across the top of pages that will cycle
     through each other with a fade effect.
     """
+    site = models.ForeignKey(Site, default=0)
     page = models.ForeignKey(Page)
     file = FileField(_('File'), max_length=200, upload_to='slides', format='Image')
     description = models.CharField(_('Description'), blank=True, max_length=200)
