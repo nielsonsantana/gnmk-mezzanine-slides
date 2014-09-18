@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='mezzanine-slides',
-    version='2.1.1',
+    version='2.1.2',
     license='Simplified BSD',
 
     install_requires=[
