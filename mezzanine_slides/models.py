@@ -23,6 +23,7 @@ class Slide(Orderable):
     file = FileField(_('File'), max_length=200, upload_to='slides', format='Image')
     description = models.CharField(_('Description'), blank=True, max_length=200)
     caption = models.CharField(_('Caption'), blank=True, max_length=200)
+    url = models.URLField(_(u'Link'), max_length=255, default="", blank=True, null=True)
     site = models.ForeignKey(Site)
 
     class Meta:
