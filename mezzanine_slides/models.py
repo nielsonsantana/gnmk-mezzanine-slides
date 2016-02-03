@@ -1,3 +1,4 @@
+#! -*- encoding: utf-8 -*-
 try:
     from urllib import unquote
 except ImportError:  # assume python3
@@ -14,6 +15,12 @@ from mezzanine.core.models import Orderable
 from mezzanine.core.fields import FileField
 
 
+class SlideManager(models.Manager):
+    use_for_related_fields = True
+
+    def get_public_slides(self):
+        return super(SlideManager, self).get_queryset().filter(public=True)
+
 class Slide(Orderable):
     """
     Allows for pretty banner images across the top of pages that will cycle
@@ -24,7 +31,10 @@ class Slide(Orderable):
     description = models.CharField(_('Description'), blank=True, max_length=200)
     caption = models.CharField(_('Caption'), blank=True, max_length=200)
     url = models.URLField(_(u'Link'), max_length=255, default="", blank=True, null=True)
+    public = models.BooleanField(default=True, blank=True, verbose_name=u"Público",)
     site = models.ForeignKey(Site)
+
+    objects = SlideManager()
 
     class Meta:
         verbose_name = _('Slide')
